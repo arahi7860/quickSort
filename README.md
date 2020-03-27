@@ -1,6 +1,6 @@
 # Quick Sort
 
-## ![quick gif](https://media.giphy.com/media/dHOKJqGpPMPBK/giphy.gif)
+## ![riaan's quick thinking](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
 
 ### Like _Merge Sort_, _Quick Sort_ is a Divide and Conquer Algorithm that exploits the fact that arrays of 0 or 1 elements are always sorted.
 
@@ -42,7 +42,7 @@ To implement the sort, it's helpful to have:
 
 ### Part 1: Partition Helper
 
-- In order to implement quicksort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot
+- In order to implement quicksort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot.
 - Given an array, this helper function should designate an element as the pivot.
 - It should then rearrange elements in the array so that all values less than the pivot are moved to the left of the pivot, and all vlaues greater than the pivot moved to the right of the pivot.
 - The order of elements on either side of the pivot doesn't matter!
