@@ -91,3 +91,6 @@ In the best case scenario, the entire algorithm will take O(N) * O(logN) which i
 The worst case is if we pick a pivot that's actually the smallest or largest element in the input. In this case, we do an O(N) partitioning level, but instead of getting two halves of equal size, we've ended up with one partition of one element, and one partition of N elements. If that happens for every level of partitioning, we obviously end up doing O(N),instead of O(logn) partitioning levels before even partition is down to one element.
 
 This gives the technically correct big-O complexity for Quick Sort. Since we have O(N) levels of partitioning, and each level requires O(N) steps, we end up with O(N * N) (i.e., **O(N2)** complexity.
+
+## ![riaan's quick thinking](https://33.media.tumblr.com/7f91f74e46e50787aad2c718e787fa7e/tumblr_nv1breX8Kh1uu6qs9o6_250.gif)
+
