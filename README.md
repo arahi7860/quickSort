@@ -1,4 +1,4 @@
-# Divide & Conquer Pt. 1 – Quick Sort
+# Divide & Conquer Pt. 2 – Quick Sort
 
 ## ![pivot](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
 
