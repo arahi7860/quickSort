@@ -1,6 +1,6 @@
-# Quick Sort
+# Divide & Conquer Pt. 1 – Quick Sort
 
-## ![riaan's quick thinking](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
+## ![pivot](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
 
 ### Like _Merge Sort_, _Quick Sort_ is a Divide and Conquer Algorithm that exploits the fact that arrays of 0 or 1 elements are always sorted.
 
