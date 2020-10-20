@@ -1,15 +1,17 @@
 # Divide & Conquer Pt. 2 – Quick Sort
 
-## ![pivot](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
+![pivot](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
 
-### Like _Merge Sort_, _Quick Sort_ is a Divide and Conquer Algorithm that exploits the fact that arrays of 0 or 1 elements are always sorted.
+## Quick Sort
+
+Like _Merge Sort_, _Quick Sort_ is a Divide and Conquer Algorithm that exploits the fact that arrays of 0 or 1 elements are always sorted.
 
 - An array with 0 elements - i.e.: `[]` - has nothing to sort;
 - An array with 1 element - i.e.: `[2]` - is already sorted;
 
-## Overview
+### Overview
 
-Quick sort works by selecting one element in the array– a "pivot"– and finding the index where the pivot would be placed in the final, sorted array.
+Quick sort works by selecting one element in the array– a "pivot"– and comparing each element to that partition.
 
 On selecting a pivot– also referred to as the **partition index**– Quick Sort then moves the elements such that all elements **less than** the pivot come before all elements **greater than**. This creates a natural division in the array. This process is then repeated using recursion on the left and right sides, referred to as "partitions".
 
@@ -28,9 +30,13 @@ There are various ways of choosing the pivot, namely:
 
 ![](https://media.giphy.com/media/Sr3PWdsXO8QFgEHmbR/giphy.gif)
 
-[Explained](https://youtu.be/SLauY6PpjW4?t=10)
+Let's take a look at this, visually:
 
-[Visualgo](https://visualgo.net/en/sorting)
+[Quick Sort](https://opendsa-server.cs.vt.edu/embed/quicksortAV)
+
+[Hungarian Saxon Dancing!](https://www.youtube.com/watch?v=ywWBy6J5gz8&list=PLuE79vNc5Wi6q34LsQcaJ7ISQ8uOyMaL_&index=4)
+
+[Extra Video of Quick Sort Explained](https://youtu.be/SLauY6PpjW4?t=10)
 
 ### Implementation
 
@@ -39,15 +45,15 @@ To implement the sort, it's helpful to have:
 1. A **partition** helper method.
 2. The `quickSort()` function, used recursively on the partitions.
 
-
 ### Part 1: Partition Helper
 
-- In order to implement quicksort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot.
-- Given an array, this helper function should designate an element as the pivot.
-- It should then rearrange elements in the array so that all values less than the pivot are moved to the left of the pivot, and all vlaues greater than the pivot moved to the right of the pivot.
-- The order of elements on either side of the pivot doesn't matter!
-- The helper should do this in place, that is, it should not create a new array.
+In order to implement quick sort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot. Given an array, this helper function should:
+
+- Designate an element as the pivot.
+- Rearrange elements in the array so that **all values less than the pivot** are moved to the left of **all vlaues greater than the pivot**. 
 - When complete, the helper should return the **index of the pivot**
+
+Note: The order of elements on either side of the pivot doesn't matter, and the helper should do this in place, that is, it should not create a new array.
 
 ### Pseudocode 
 
@@ -68,9 +74,9 @@ Write a function `quickSort()` that accepts 3 arguments: an array, start index, 
 - Call the partition helper on the array that's been passed in
 - When the helper returns the updated pivot index, **recursively** call `quickSort()` on the left and on the right subarray
 
-## Picking a Pivot is Important
+### Big O Complexity
 
-### Quick Sort complexity depends on the pivot.
+Quick Sort complexity depends on the pivot, which means picking your pivot is very important.
 
 - Ideally, the pivot should be chosen so that it's roughly the median value in the data set you're sorting.
 - For simplicity, we'll always choose the pivot to be the first element or the last.
