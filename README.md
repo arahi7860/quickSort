@@ -1,71 +1,87 @@
-# Quick sort
-![](https://media.giphy.com/media/dHOKJqGpPMPBK/giphy.gif)
+# Divide & Conquer Pt. 2 – Quick Sort
 
-- Like merge sort, exploits the fact that arrays of 0 or 1 element are always sorted. 
+![pivot](https://thumbs.gfycat.com/GlassHastyBighornedsheep-size_restricted.gif)
 
-`[]` - nothing to sort;
+## Quick Sort
 
-`[2]`-only one element, therefore it's already sorted;
+Like _Merge Sort_, _Quick Sort_ is a Divide and Conquer Algorithm that exploits the fact that arrays of 0 or 1 elements are always sorted.
 
-- Works by selecting one element (called the "pivot") and finding the index where the pivot should end up in the sorted array.
+- An array with 0 elements - i.e.: `[]` - has nothing to sort;
+- An array with 1 element - i.e.: `[2]` - is already sorted;
 
-Quick sort selects an element either from the leftmost or rightmost of the list to act as a **pivot**. The elements **smaller** than the pivot are ordered on the **leftmost** and the **greater** ones at the **rightmost**. This process is repeated for each sub-list using recursion.
-       
+### Overview
+
+Quick sort works by selecting one element in the array– a "pivot"– and comparing each element to that partition.
+
+On selecting a pivot– also referred to as the **partition index**– Quick Sort then moves the elements such that all elements **less than** the pivot come before all elements **greater than**. This creates a natural division in the array. This process is then repeated using recursion on the left and right sides, referred to as "partitions".
+
 There are various ways of choosing the pivot, namely:
 
-* Choosing the **first** element
-* Choosing the **last** element
-* Pick an element randomly
+- Choose the **first** element
+- Choose the **last** element
+- Pick a **random** element
+- "Median of 3"
 
-
-Example for pivot as last element:
+> An example of using the last element as the pivot:
 
 ![](1.png)
 
-Example for pivot as first element:
+> An example of using the first element as the pivot:
 
 ![](https://media.giphy.com/media/Sr3PWdsXO8QFgEHmbR/giphy.gif)
 
-[Visualgo](https://visualgo.net/en/sorting)
+Let's take a look at this, visually:
 
-### Implementation:
+[Quick Sort](https://opendsa-server.cs.vt.edu/embed/quicksortAV)
 
-- **Partition** helper method
-- Call `quickSort()` recursively on the subarrays
+[Hungarian Saxon Dancing!](https://www.youtube.com/watch?v=ywWBy6J5gz8&list=PLuE79vNc5Wi6q34LsQcaJ7ISQ8uOyMaL_&index=4)
 
+[Extra Video of Quick Sort Explained](https://youtu.be/SLauY6PpjW4?t=10)
 
-### Part 1: Partition(pivot) Helper
-- In order to implement quicksort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot
-- Given an array, this helper function should designate an element as the pivot.
-- It should then rearrange elements in the array so that all values less than the pivot are moved to the left of the pivot, and all vlaues greater than the pivot moved to the right of the pivot.
-- The order of elements on either side of the pivot doesn't matter!
-- The helper should do this in place, that is, it should not create a new array.
+### Implementation
+
+To implement the sort, it's helpful to have:
+
+1. A **partition** helper method.
+2. The `quickSort()` function, used recursively on the partitions.
+
+### Part 1: Partition Helper
+
+In order to implement quick sort, it's useful to first implement a function responsible for arranging elements in an array on either side of a pivot. Given an array, this helper function should:
+
+- Designate an element as the pivot.
+- Rearrange elements in the array so that **all values less than the pivot** are moved to the left of **all vlaues greater than the pivot**. 
 - When complete, the helper should return the **index of the pivot**
 
-### Pseudocode 
-Write a function `partition()` that accepts 3 arguments: an array, start index, and an end index( default values: start = 0, end = array.length-1);
+Note: The order of elements on either side of the pivot doesn't matter, and the helper should do this in place, that is, it should not create a new array.
 
-* Grab the pivot from the start of the array 
-* Store the current pivot index in a variable `swapIndex`(this will keep track of where the pivot should end up).
-* Loop through the array from start to end
-  * If the pivot is greater than the current element, increment the pivot index variable and then **swap** the current element with the element in the pivot index
-* Outside of the loop swap the starting element(i.e the pivot) with the pivot index.
-* Return the `swapIndex`.
+### Pseudocode 
+
+Write a function `partition()` that accepts 3 arguments:
+an array, a start index, and an end index (default values: start = 0, end = array.length-1).
+
+- Grab the pivot.
+- Store the current pivot index in a variable `swapIndex` (this will keep track of where the pivot should end up).
+- Loop through the array from start to end.
+  - If the pivot is greater than the current element, increment the pivot index variable and then swap the current element with the element in the pivot index.
+- Outside of the loop swap the starting element(i.e the pivot) with the pivot index.
+- Return the `swapIndex`.
 
 ### Part 2: quickSort()
+
 Write a function `quickSort()` that accepts 3 arguments: an array, start index, and an end index( default values: start = 0, end = array.length-1);
 
-* Call the partition helper on the array that's been passed in
-* When the helper returns the updated pivot index, **recursively** call `quickSort()` on the left and on the right subarray
+- Call the partition helper on the array that's been passed in
+- When the helper returns the updated pivot index, **recursively** call `quickSort()` on the left and on the right subarray
 
+### Big O Complexity
 
-## Picking a pivot 
+Quick Sort complexity depends on the pivot, which means picking your pivot is very important.
 
-### The runtime of quick sort depends in part on how one selects the pivot
-- Ideally, the pivot should be chosen so that it's roughly the median value in the data set you're sorting
+- Ideally, the pivot should be chosen so that it's roughly the median value in the data set you're sorting.
 - For simplicity, we'll always choose the pivot to be the first element or the last.
 
-**Best case**
+#### Best Case
 
 If we assume perfect partitioning, we get exact halves every time. The "halves" probably won't be precisely equal, but if we choose the pivot well, they should be pretty close.
 
@@ -76,8 +92,11 @@ In the best case scenario, the entire algorithm will take O(N) * O(logN) which i
 
 ![](2.jpg)
 
-**Worst case**
+#### Worst Case
 
 The worst case is if we pick a pivot that's actually the smallest or largest element in the input. In this case, we do an O(N) partitioning level, but instead of getting two halves of equal size, we've ended up with one partition of one element, and one partition of N elements. If that happens for every level of partitioning, we obviously end up doing O(N),instead of O(logn) partitioning levels before even partition is down to one element.
 
-This gives the technically correct big-O complexity for Quicksort. Since we have O(N) levels of partitioning, and each level requires O(N) steps, we end up with O(N * N) (i.e., **O(N2)** complexity. 
+This gives the technically correct big-O complexity for Quick Sort. Since we have O(N) levels of partitioning, and each level requires O(N) steps, we end up with O(N * N) (i.e., **O(N2)** complexity.
+
+## ![riaan's quick thinking](https://33.media.tumblr.com/7f91f74e46e50787aad2c718e787fa7e/tumblr_nv1breX8Kh1uu6qs9o6_250.gif)
+
