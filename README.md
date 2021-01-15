@@ -9,7 +9,7 @@ _Quick Sort_ is a Divide and Conquer Algorithm that exploits the fact that array
 
 ### Overview
 
-Quick sort works by selecting one element in the array– a "pivot"– and comparing each element to that partition.
+Quick sort works by selecting one element in the array – a "pivot" – and comparing each element to that partition.
 
 On selecting a pivot – also referred to as the **partition index** – Quick Sort then moves the elements such that all elements **less than** the pivot come before all elements **greater than**. This creates a natural division in the array. This process is then repeated using recursion on the left and right sides, referred to as "partitions".
 
