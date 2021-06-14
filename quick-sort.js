@@ -1,22 +1,25 @@
 function quickSort(arr) {
-  /* since we will be using recurrsion, we need to have a base case
-  much like mergesort our base case is checking the length of the array
-  if the array is less than or equal to 1 then return the array */
-  if (arr.length <= 1) {
-    return arr;
-  } else {
-    /* find our pivot - I'm choosing to pick the last elment in the array
-    using the pop method */
-    /* now we need to move everything smaller than the pivot to the left
-    of everything that is greater we can use the filter method to
-    accomplish the comparision and returning a new array  */
-    /* just like above, now we need to move everything greater than the
-    pivot to the right of everything that is smaller - still using filter
-    to accomplish the comparison and returning a new array */
-    /* lastly we want to return our recursive function call using quickSort
-    passing our "left" array from filter and then concatenating the pivot 
-    and another quickSort call with the arugement of our "right" array */
-  }
+
+  // 1. establish a base case
+  // if the length of the array is less than 2, simply return the array
+
+  // 2. choose a pivot
+  // select an element from the array HOWEVER YOU WANT -- .pop(), .shift(), .splice(), [:shrug emoji]
+  // regardless how you choose it, make sure the pivot is NOT included in the array in step 4
+
+  // 3. create empty "left" and "right" arrays
+
+  // 4. populate "left" and "right"
+  // loop through your array, comparing each element to the pivot
+  // if it's less than the pivot, add it to "left"; if it's greater, add to "right"
+
+  // 5. return everything in order
+  // create a new array, into which you will add:
+  // - the result of quickSorting the left array (spread out!)
+  // - the pivot, just like it is
+  // - the result of quickSorting the right array (spread out!)
+  // ... and return it!
+
 }
 
 console.log(
